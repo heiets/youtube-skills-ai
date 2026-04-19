@@ -6,8 +6,6 @@ Static companion pages for the YouTube channel [Сашко пише код](http
 
 **https://youtube-skills-ai.vercel.app**
 
-*(If the deployment uses a different Vercel URL, it will be updated in this README after the first production deploy.)*
-
 ## Pages
 
 | URL | Chapter |
