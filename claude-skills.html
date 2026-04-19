@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Claude Skills — Understanding Skills in AI tools</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Skills.</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="what-are-skills.html">What they are</a>
+      <a href="claude-skills.html" class="active">Claude</a>
+      <a href="cursor-rules.html">Cursor</a>
+      <a href="tool-comparison.html">Comparison</a>
+      <a href="create-skill.html">Create</a>
+      <a href="best-practices.html">Best practices</a>
+      <a href="pros-cons.html">Pros & cons</a>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+    <div class="nav-cta"><a href="https://www.youtube.com/@dev.sashko" target="_blank">@dev.sashko →</a></div>
+  </div>
+</nav>
+
+<div class="channel-banner">
+  Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank">Сашко пише код</a>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="eyebrow">Chapter 02 · Reference implementation</div>
+      <h1 class="hero" style="font-size:72px;">Claude Skills.<br/><span class="gradient-word">The gold standard.</span></h1>
+      <p class="lead">Folders containing a <code style="background:rgba(255,255,255,0.06); padding:3px 10px; border-radius:8px; font-size:18px; color:#64d2ff;">SKILL.md</code> file — YAML frontmatter with metadata, and a Markdown body with actual instructions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">The frontmatter</div>
+      <h2 class="section-title">Two required fields. Both strict.</h2>
+    </div>
+
+    <div class="cards two reveal">
+      <div class="card">
+        <div class="icon">🏷️</div>
+        <h3><code style="color:#64d2ff; font-family:'SF Mono',monospace;">name</code></h3>
+        <p>Limited to 64 characters, lowercase with hyphens. It cannot contain "anthropic" or "claude".</p>
+      </div>
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3><code style="color:#64d2ff; font-family:'SF Mono',monospace;">description</code></h3>
+        <p>Capped at 1,024 characters. Should describe <strong style="color:var(--fg);">both what the skill does and when to use it</strong>, written in third person.</p>
+      </div>
+    </div>
+
+    <pre class="code reveal"><span class="c">---</span>
+<span class="k">name:</span> react-component-review
+<span class="k">description:</span> Reviews React components for prop typing, naming, and
+  styling conventions. Use when creating or editing files under
+  src/components, or when the user mentions React, JSX, or TSX.
+<span class="c">---</span>
+
+<span class="c"># When reviewing React components, verify typed props, named exports, and Tailwind-only styling...</span></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">The breakthrough</div>
+      <h2 class="section-title">Progressive disclosure — three levels of loading.</h2>
+      <p class="lead">Three loading tiers keep the context window clean: metadata is always present, the body loads only when the skill triggers, and bundled files are read on demand.</p>
+    </div>
+
+    <div class="disclosure reveal">
+      <div class="disc-row">
+        <div class="disc-level">Level 1</div>
+        <div>
+          <div style="font-weight:500; margin-bottom:6px;">Metadata (name + description)</div>
+          <div style="color:var(--fg-muted); font-size:14px;">Loaded at startup — so Claude knows the skill exists.</div>
+          <div class="disc-bar" style="margin-top:12px;"><div class="fill" data-w="8%"></div></div>
+        </div>
+        <div class="disc-cost">~100 tokens / skill</div>
+      </div>
+
+      <div class="disc-row">
+        <div class="disc-level">Level 2</div>
+        <div>
+          <div style="font-weight:500; margin-bottom:6px;">SKILL.md body</div>
+          <div style="color:var(--fg-muted); font-size:14px;">Loaded only when the skill triggers based on the conversation.</div>
+          <div class="disc-bar" style="margin-top:12px;"><div class="fill" data-w="35%"></div></div>
+        </div>
+        <div class="disc-cost">under 5K tokens</div>
+      </div>
+
+      <div class="disc-row">
+        <div class="disc-level">Level 3</div>
+        <div>
+          <div style="font-weight:500; margin-bottom:6px;">Bundled files & scripts</div>
+          <div style="color:var(--fg-muted); font-size:14px;">Only pulled in if Claude explicitly reads them on demand.</div>
+          <div class="disc-bar" style="margin-top:12px;"><div class="fill" data-w="90%"></div></div>
+        </div>
+        <div class="disc-cost">effectively unlimited</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Three surfaces</div>
+      <h2 class="section-title">Skills work across the Claude ecosystem.</h2>
+    </div>
+
+    <div class="cards reveal">
+      <div class="card">
+        <div class="icon">🌐</div>
+        <h3>Claude.ai (web)</h3>
+        <p>Supports ZIP uploads in Settings — for Pro, Max, Team, and Enterprise plans.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💻</div>
+        <h3>Claude Code (CLI)</h3>
+        <p>Uses filesystem-based skills in <code>~/.claude/skills/</code> (personal) or <code>.claude/skills/</code> (project).</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔌</div>
+        <h3>Claude API</h3>
+        <p>Requires three beta headers and does <strong style="color:var(--fg);">not</strong> sync across surfaces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Beyond programming</div>
+      <h2 class="section-title">Skills ship for document creation too.</h2>
+      <p class="lead">Anthropic ships several built-in skills for handling Office documents — source-available in the anthropics/skills GitHub repo.</p>
+    </div>
+
+    <div class="cards reveal">
+      <div class="card">
+        <div class="icon">📄</div>
+        <h3>docx · Word</h3>
+        <p>Generate a formatted meeting-notes document from a chat transcript, or rewrite a contract template with clause substitutions.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>xlsx · Excel with charts</h3>
+        <p>Turn a CSV of sales data into a workbook with pivot tables and a monthly-revenue chart ready to share with stakeholders.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎞️</div>
+        <h3>pptx · PowerPoint</h3>
+        <p>Draft a pitch deck with branded title slide, section headers, and speaker notes — directly from a product one-pager.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📕</div>
+        <h3>pdf · generate & extract</h3>
+        <p>Extract tabular data from an invoice PDF, fill a tax form with user-provided values, or merge multiple reports into one file.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧪</div>
+        <h3>skill-creator · meta-skill</h3>
+        <p>Scaffolds a new skill: asks you for a name and description, produces a valid SKILL.md, and lints the frontmatter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="page-nav">
+      <a href="what-are-skills.html"><div class="label">← Previous</div><div class="title">01 — What skills actually are</div></a>
+      <a href="cursor-rules.html" class="next"><div class="label">Next chapter</div><div class="title">03 — Cursor Rules →</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank" class="channel">Сашко пише код</a></div>
+  <div>Understanding Skills in AI tools · Based on the developer's guide, 2026</div>
+  <div class="links">
+    <a href="index.html">Overview</a>
+    <a href="claude-skills.html">Claude</a>
+    <a href="cursor-rules.html">Cursor</a>
+    <a href="conclusions.html">Conclusions</a>
+    <a href="https://www.youtube.com/@dev.sashko" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

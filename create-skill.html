@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>How to create a skill — Understanding Skills in AI tools</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Skills.</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="what-are-skills.html">What they are</a>
+      <a href="claude-skills.html">Claude</a>
+      <a href="cursor-rules.html">Cursor</a>
+      <a href="tool-comparison.html">Comparison</a>
+      <a href="create-skill.html" class="active">Create</a>
+      <a href="best-practices.html">Best practices</a>
+      <a href="pros-cons.html">Pros & cons</a>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+    <div class="nav-cta"><a href="https://www.youtube.com/@dev.sashko" target="_blank">@dev.sashko →</a></div>
+  </div>
+</nav>
+
+<div class="channel-banner">
+  Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank">Сашко пише код</a>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="eyebrow">Chapter 05 · The predictable shape</div>
+      <h1 class="hero" style="font-size:72px;">How to actually<br/><span class="gradient-word">create a skill.</span></h1>
+      <p class="lead">Start with a clear, action-oriented description (this is what triggers it). Write a short body with concrete rules and at least one example. Link out to supporting files for anything long.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Example 01 · Component standards</div>
+      <h2 class="section-title">Auto-attach on React components.</h2>
+      <p class="lead">A focused skill that loads on <code style="color:#64d2ff;">.tsx</code> files and teaches the agent your project's React component conventions — the exact shape Cursor's docs recommend for per-file-type rules.</p>
+    </div>
+    <pre class="code reveal"><span class="c">---</span>
+<span class="k">name:</span> react-component-standards
+<span class="k">description:</span> React component standards for frontend UI files. Use when
+  creating or editing React components, presentational patterns, or
+  anything under src/components.
+<span class="k">globs:</span> src/components/**/*.tsx, src/components/**/*.ts
+<span class="k">alwaysApply:</span> false
+<span class="c">---</span>
+
+<span class="c"># React Component Guidelines</span>
+
+When writing or reviewing React components, enforce:
+
+1. <span class="s">**Component type**</span>: functional components only — no class components
+2. <span class="s">**Props**</span>: define a typed <span class="s">'interface'</span> at the top of the file
+3. <span class="s">**Exports**</span>: named exports only; never default-export components
+4. <span class="s">**Styling**</span>: Tailwind utility classes; avoid inline <span class="s">'style={}'</span> objects
+5. <span class="s">**Server state**</span>: use TanStack Query; never <span class="s">'useEffect'</span> + <span class="s">'fetch'</span>
+
+<span class="c">## Example</span>
+
+❌ <span class="s">Bad:</span>  <span class="s">'export default function card(props: any) { ... }'</span>
+✅ <span class="s">Good:</span> <span class="s">'export function Card({ title, onSelect }: CardProps) { ... }'</span>
+
+<span class="p">@component-template.tsx</span></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Example 02 · Custom hooks review</div>
+      <h2 class="section-title">An agent-decided skill for hooks.</h2>
+      <p class="lead">A different activation style — description-only so the agent loads it when it detects hook work. Different area: logic, not presentation. Enforces the rules-of-hooks and cleanup patterns.</p>
+    </div>
+    <pre class="code reveal"><span class="c">---</span>
+<span class="k">name:</span> review-react-hooks
+<span class="k">description:</span> When reviewing or writing React custom hooks — functions
+  prefixed with 'use', files under src/hooks, or any code that calls
+  useState, useEffect, useMemo, or useCallback.
+<span class="c">---</span>
+
+<span class="c"># React Hooks Review</span>
+
+When reviewing React hooks, check for:
+
+1. <span class="s">**Naming**</span>: custom hooks must start with <span class="s">'use'</span> (e.g. <span class="s">'useAuth'</span>, <span class="s">'useCart'</span>)
+2. <span class="s">**Rules of Hooks**</span>: never call hooks inside loops, conditions, or nested functions
+3. <span class="s">**Dependencies**</span>: every value referenced inside <span class="s">'useEffect'</span>/<span class="s">'useMemo'</span>/<span class="s">'useCallback'</span> must appear in the deps array
+4. <span class="s">**Cleanup**</span>: any subscription, timer, or abort controller must return a cleanup function
+5. <span class="s">**Return shape**</span>: return a stable object or tuple — not a new reference on every render
+
+<span class="c">## Example</span>
+
+❌ <span class="s">Bad:</span>  <span class="s">'useEffect(() => { fetchUser(id) }, [])'</span>  <span class="c">// missing dep</span>
+✅ <span class="s">Good:</span> <span class="s">'useEffect(() => { const c = new AbortController(); fetchUser(id, c.signal); return () => c.abort(); }, [id])'</span></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Example 03 · Accessibility audit</div>
+      <h2 class="section-title">A manual, user-invoked skill.</h2>
+      <p class="lead">Auditing a component for accessibility is explicit, occasional work — so this skill has empty frontmatter and is invoked with <code style="color:#64d2ff;">@a11y-audit</code>. Covers yet another area: compliance.</p>
+    </div>
+    <pre class="code reveal"><span class="c">---</span>
+<span class="k">name:</span> a11y-audit
+<span class="k">description:</span> Audits React components for WCAG 2.1 AA accessibility issues —
+  semantic HTML, ARIA attributes, keyboard navigation, and color contrast.
+  Use when the user asks for an accessibility review or types @a11y-audit.
+<span class="c">---</span>
+
+<span class="c"># Accessibility Audit for React</span>
+
+When auditing a React component, verify:
+
+1. <span class="s">**Semantic HTML**</span>: use <span class="s">'&lt;button&gt;'</span>, <span class="s">'&lt;nav&gt;'</span>, <span class="s">'&lt;main&gt;'</span> — never <span class="s">'&lt;div onClick&gt;'</span> for interactive controls
+2. <span class="s">**Keyboard support**</span>: all interactive elements must be reachable by <span class="s">'Tab'</span> and activatable with <span class="s">'Enter'</span>/<span class="s">'Space'</span>
+3. <span class="s">**ARIA labels**</span>: icon-only buttons need <span class="s">'aria-label'</span>; form fields need a <span class="s">'&lt;label&gt;'</span> or <span class="s">'aria-labelledby'</span>
+4. <span class="s">**Focus management**</span>: visible focus outline; modals trap focus and return it on close
+5. <span class="s">**Images**</span>: every <span class="s">'&lt;img&gt;'</span> has a meaningful <span class="s">'alt'</span> or <span class="s">'alt=""'</span> for decorative images
+
+<span class="c">## Example</span>
+
+❌ <span class="s">Bad:</span>  <span class="s">'&lt;div onClick={close}&gt;×&lt;/div&gt;'</span>
+✅ <span class="s">Good:</span> <span class="s">'&lt;button type="button" aria-label="Close dialog" onClick={close}&gt;×&lt;/button&gt;'</span></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Four rules that ship</div>
+      <h2 class="section-title">The shape that works.</h2>
+      <p class="lead">Synthesized from Anthropic's best-practices docs and Ivan Seleznov's 650-trial study on Medium in 2026.</p>
+    </div>
+
+    <div class="principles reveal">
+      <div class="principle">
+        <div class="principle-num">01</div>
+        <div>
+          <h3>Write descriptions like search queries, not documentation</h3>
+          <p>"React helper" is vague. "Use when reviewing React components for prop typing, naming, or Tailwind usage" is specific enough that semantic matching actually works.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">02</div>
+        <div>
+          <h3>Include explicit trigger phrases</h3>
+          <p>Mention the file types, user intents, and keywords that should fire the skill.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">03</div>
+        <div>
+          <h3>Be "a little bit pushy"</h3>
+          <p>Skills tend to under-trigger by default. Anthropic's own skill-creator docs recommend this — vague descriptions cause skills to never fire.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">04</div>
+        <div>
+          <h3>Third person, action-first</h3>
+          <p>"Processes Excel files" — not "I can help with Excel." Matches how agents reason about tool choice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Naming & organization</div>
+      <h2 class="section-title">Kebab-case, verb-first.</h2>
+      <p class="lead"><code style="color:#64d2ff;">review-react-components.mdc</code> is better than <code style="color:#64d2ff;">react.mdc</code>. Keep each skill single-purpose — Atlan's engineering team recommends 1–3 "always-on" rules maximum; everything else is auto-attach or agent-requested.</p>
+    </div>
+
+    <div class="bullet-list reveal">
+      <li><span class="chk">✓</span><div><strong>Coding standards</strong> — great as auto-attach on file globs</div></li>
+      <li><span class="chk">✓</span><div><strong>Project context</strong> — architecture + tech stack, <code>CLAUDE.md/AGENTS.md</code> under 60 lines</div></li>
+      <li><span class="chk">✓</span><div><strong>Framework-specific conventions</strong> — ideal auto-attach use case</div></li>
+      <li><span class="chk">✓</span><div><strong>Workflow steps</strong> — like commit hooks; better as deterministic scripts than skills</div></li>
+      <li><span class="chk">✓</span><div><strong>Testing patterns</strong> — fixture locations, mocking conventions</div></li>
+      <li><span class="chk">✓</span><div><strong>Comprehensive vs focused</strong> — monolithic 500-line skills underperform. Use progressive disclosure.</div></li>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="page-nav">
+      <a href="tool-comparison.html"><div class="label">← Previous</div><div class="title">04 — Tool comparison</div></a>
+      <a href="best-practices.html" class="next"><div class="label">Next chapter</div><div class="title">06 — Best practices →</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank" class="channel">Сашко пише код</a></div>
+  <div>Understanding Skills in AI tools · Based on the developer's guide, 2026</div>
+  <div class="links">
+    <a href="index.html">Overview</a>
+    <a href="claude-skills.html">Claude</a>
+    <a href="cursor-rules.html">Cursor</a>
+    <a href="conclusions.html">Conclusions</a>
+    <a href="https://www.youtube.com/@dev.sashko" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

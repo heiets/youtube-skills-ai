@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Tool comparison — Understanding Skills in AI tools</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Skills.</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="what-are-skills.html">What they are</a>
+      <a href="claude-skills.html">Claude</a>
+      <a href="cursor-rules.html">Cursor</a>
+      <a href="tool-comparison.html" class="active">Comparison</a>
+      <a href="create-skill.html">Create</a>
+      <a href="best-practices.html">Best practices</a>
+      <a href="pros-cons.html">Pros & cons</a>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+    <div class="nav-cta"><a href="https://www.youtube.com/@dev.sashko" target="_blank">@dev.sashko →</a></div>
+  </div>
+</nav>
+
+<div class="channel-banner">
+  Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank">Сашко пише код</a>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="eyebrow">Chapter 04 · Side by side</div>
+      <h1 class="hero" style="font-size:72px;">Every tool.<br/><span class="gradient-word">One shape.</span></h1>
+      <p class="lead">The ecosystem has converged on Markdown-based instruction files — but they diverge on activation philosophy. Here's the honest comparison as of April 2026.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>File location</th>
+            <th>Activation</th>
+            <th>Progressive loading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Claude Code</strong></td>
+            <td><code>.claude/skills/*</code> + <code>CLAUDE.md</code></td>
+            <td>Three-tier progressive disclosure</td>
+            <td class="good">Yes (best-in-class)</td>
+          </tr>
+          <tr>
+            <td><strong>Cursor</strong></td>
+            <td><code>.cursor/rules/*.mdc</code></td>
+            <td>Four modes (always/auto/agent/manual)</td>
+            <td class="good">Yes</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub Copilot</strong></td>
+            <td><code>.github/copilot-instructions.md</code></td>
+            <td>Always + path globs + manual prompts</td>
+            <td class="mid">Partial (globs)</td>
+          </tr>
+          <tr>
+            <td><strong>Windsurf</strong></td>
+            <td><code>.windsurf/rules/*.md</code></td>
+            <td>Four modes: always/manual/model-decision/glob</td>
+            <td class="good">Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Continue.dev</strong></td>
+            <td><code>.continue/rules/*.md</code></td>
+            <td><code>alwaysApply</code> + globs + description</td>
+            <td class="good">Yes</td>
+          </tr>
+          <tr>
+            <td><strong>Cline</strong></td>
+            <td><code>.clinerules/*.md</code></td>
+            <td>UI toggle + path frontmatter</td>
+            <td class="bad">No</td>
+          </tr>
+          <tr>
+            <td><strong>Aider</strong></td>
+            <td><code>CONVENTIONS.md</code> (any name)</td>
+            <td>Manual via <code>--read</code> flag</td>
+            <td class="bad">No</td>
+          </tr>
+          <tr>
+            <td><strong>Codex CLI</strong></td>
+            <td><code>AGENTS.md</code></td>
+            <td>Always loaded, closest-wins hierarchy</td>
+            <td class="mid">Directory-based</td>
+          </tr>
+          <tr>
+            <td><strong>Gemini CLI</strong></td>
+            <td><code>GEMINI.md</code></td>
+            <td>Always loaded + <code>@imports</code> + hierarchical</td>
+            <td class="mid">Partial (sub-dir-lazy)</td>
+          </tr>
+          <tr>
+            <td><strong>Roo / Kilo Code</strong></td>
+            <td><code>.roo/rules/*</code> + <code>AGENTS.md</code></td>
+            <td>Always-on per active mode</td>
+            <td class="mid">Via mode switching</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Three threads in the ecosystem</div>
+      <h2 class="section-title">Convergence — with three distinct camps.</h2>
+    </div>
+
+    <div class="principles reveal">
+      <div class="principle">
+        <div class="principle-num">01</div>
+        <div>
+          <h3>The AGENTS.md open standard</h3>
+          <p>Supported natively by Codex, Cursor, Gemini CLI, Copilot, Windsurf, Continue.dev, Aider, and more — through a cross-tool convention stewarded by the Linux Foundation's Agentic AI Foundation. It is the closest thing to a cross-tool-ready "just works" file today.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">02</div>
+        <div>
+          <h3>Claude Skills are directory-based, not file-based</h3>
+          <p>Every other tool points at a single Markdown file. Claude Skills are folders in <code>.claude/skills/</code> that can ship a <code>SKILL.md</code> alongside scripts, reference documents, and templates — which is what enables progressive disclosure of bundled files on demand.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">03</div>
+        <div>
+          <h3>Cursor is the only tool with four activation modes</h3>
+          <p>Always Apply, Specific Files (globs), Intelligently (description-only), and Manually (<code>@rule-name</code>) — a granularity the rest of the ecosystem hasn't matched. Every other tool offers one or two of these, not all four.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="page-nav">
+      <a href="cursor-rules.html"><div class="label">← Previous</div><div class="title">03 — Cursor Rules</div></a>
+      <a href="create-skill.html" class="next"><div class="label">Next chapter</div><div class="title">05 — How to create one →</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank" class="channel">Сашко пише код</a></div>
+  <div>Understanding Skills in AI tools · Based on the developer's guide, 2026</div>
+  <div class="links">
+    <a href="index.html">Overview</a>
+    <a href="claude-skills.html">Claude</a>
+    <a href="cursor-rules.html">Cursor</a>
+    <a href="conclusions.html">Conclusions</a>
+    <a href="https://www.youtube.com/@dev.sashko" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

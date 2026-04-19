@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Conclusions — Understanding Skills in AI tools</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Skills.</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="what-are-skills.html">What they are</a>
+      <a href="claude-skills.html">Claude</a>
+      <a href="cursor-rules.html">Cursor</a>
+      <a href="tool-comparison.html">Comparison</a>
+      <a href="create-skill.html">Create</a>
+      <a href="best-practices.html">Best practices</a>
+      <a href="pros-cons.html">Pros & cons</a>
+      <a href="conclusions.html" class="active">Conclusions</a>
+    </div>
+    <div class="nav-cta"><a href="https://www.youtube.com/@dev.sashko" target="_blank">@dev.sashko →</a></div>
+  </div>
+</nav>
+
+<div class="channel-banner">
+  Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank">Сашко пише код</a>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="eyebrow">Chapter 08 · For developers starting out</div>
+      <h1 class="hero" style="font-size:72px;">Skills are a real<br/><span class="gradient-word">engineering tool.</span></h1>
+      <p class="lead">Not a magic productivity button. If you're just getting into AI coding agents, the honest default is <strong style="color:var(--fg);">start with nothing</strong>. When you catch yourself correcting the same mistake three or more times, that's when a rule earns its place.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">The starter playbook</div>
+      <h2 class="section-title">Pick one tool. Learn its skill system deeply.</h2>
+      <p class="lead">Before trying to master all of them.</p>
+    </div>
+
+    <div class="cards reveal">
+      <div class="card">
+        <div class="icon">🅒</div>
+        <h3>If you use Claude</h3>
+        <p>Start with a short <code style="color:#64d2ff;">CLAUDE.md</code> and add skills only for repeatable workflows.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🅒</div>
+        <h3>If you use Cursor</h3>
+        <p>Start with a couple of auto-attach rules scoped by file glob — these have near-zero token cost when you're editing unrelated code.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🅒</div>
+        <h3>If you use Copilot</h3>
+        <p>Write one <code style="color:#64d2ff;">copilot-instructions.md</code> under 1,000 lines. If you use multiple tools, write an <code style="color:#64d2ff;">AGENTS.md</code> at your repo root.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">The three principles that survive</div>
+      <h2 class="section-title">What actually matters after all the hype.</h2>
+    </div>
+
+    <div class="principles reveal">
+      <div class="principle">
+        <div class="principle-num">01</div>
+        <div>
+          <h3>Descriptions are the single most important field</h3>
+          <p>Write them like search queries. Second, keep each skill single-purpose and under ~40 lines of body content for most cases; reserve length for genuine reference material that lives in linked files.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">02</div>
+        <div>
+          <h3>Prune quarterly</h3>
+          <p>Delete anything the model already does right, delete anything stale, delete anything contradictory. The patch spiral is real — Alex McFarland's widely-shared Substack: "Six rounds of fixes. Each round added more instructions."</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">03</div>
+        <div>
+          <h3>Watch your token counts</h3>
+          <p>Cursor shows them. Claude Code shows them. The Chroma context-rot research is clear: a rule that pushes you past 25% context fill is probably hurting output quality, not helping it. Add rules reluctantly and delete them aggressively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">By the numbers</div>
+      <h2 class="section-title" style="text-align:center;">What survives when the hype doesn't.</h2>
+    </div>
+
+    <div class="stat-strip reveal">
+      <div class="stat">
+        <div class="stat-num">~100</div>
+        <div class="stat-label">tokens per skill idle</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">&lt;5K</div>
+        <div class="stat-label">tokens when triggered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">&lt;60</div>
+        <div class="stat-label">lines per CLAUDE.md (recommended)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">~1K</div>
+        <div class="stat-label">lines before Copilot degrades</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="page-nav">
+      <a href="pros-cons.html"><div class="label">← Previous</div><div class="title">07 — Pros & cons</div></a>
+      <a href="index.html" class="next"><div class="label">Back to</div><div class="title">Overview ↺</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank" class="channel">Сашко пише код</a></div>
+  <div>Understanding Skills in AI tools · Based on the developer's guide, 2026</div>
+  <div class="links">
+    <a href="index.html">Overview</a>
+    <a href="claude-skills.html">Claude</a>
+    <a href="cursor-rules.html">Cursor</a>
+    <a href="conclusions.html">Conclusions</a>
+    <a href="https://www.youtube.com/@dev.sashko" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

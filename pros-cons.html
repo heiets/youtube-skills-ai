@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pros & cons — Understanding Skills in AI tools</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Skills.</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="what-are-skills.html">What they are</a>
+      <a href="claude-skills.html">Claude</a>
+      <a href="cursor-rules.html">Cursor</a>
+      <a href="tool-comparison.html">Comparison</a>
+      <a href="create-skill.html">Create</a>
+      <a href="best-practices.html">Best practices</a>
+      <a href="pros-cons.html" class="active">Pros & cons</a>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+    <div class="nav-cta"><a href="https://www.youtube.com/@dev.sashko" target="_blank">@dev.sashko →</a></div>
+  </div>
+</nav>
+
+<div class="channel-banner">
+  Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank">Сашко пише код</a>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="eyebrow">Chapter 07 · The honest picture</div>
+      <h1 class="hero" style="font-size:72px;">The brutally<br/><span class="gradient-word">honest pros & cons.</span></h1>
+      <p class="lead">Skills can genuinely make your AI agent behave like a teammate. They can also silently burn money, degrade output quality, and introduce bugs you'll blame on the model. The evidence is here.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="dual reveal">
+      <div class="panel good">
+        <div class="tag">The real wins</div>
+        <h3>What skills deliver</h3>
+        <ul>
+          <li><strong>Consistency, reusability, team standardization</strong></li>
+          <li><strong>Token efficiency when done correctly</strong></li>
+          <li><strong>Composability</strong></li>
+          <li><strong>More predictable results for document workflows</strong></li>
+        </ul>
+      </div>
+      <div class="panel bad">
+        <div class="tag">Where skills harm</div>
+        <h3>What skills cost you</h3>
+        <ul>
+          <li><strong>The always-apply token tax</strong>Cursor's <code style="color:#64d2ff;">alwaysApply: true</code> rules and Copilot's <code style="color:#64d2ff;">copilot-instructions.md</code> are injected into every single message.</li>
+          <li><strong>Context rot — the invisible degradation</strong>Chroma Research's 2025 paper tested 18 frontier models including GPT-4.1, Claude 4, Gemini 2.5, and Qwen3 — every single one degrades as context grows.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">When skills aren't worth it</div>
+      <h2 class="section-title">One striking data point.</h2>
+      <p class="lead">Vercel's published agent evaluations found a compressed-docs index embedded directly in AGENTS.md maxed 100% pass rate, while skills maxed out at 79% — even with explicit instructions — and performed no better than baseline when left to trigger naturally.</p>
+    </div>
+
+    <div class="cards reveal" style="margin-top:60px;">
+      <div class="card">
+        <div class="icon">💸</div>
+        <h3>Token usage hard numbers</h3>
+        <p>Claude Skills metadata costs ~100 tokens per skill; the body under 5K when triggered. GitHub Context windows range from 128K (most Cursor models) to 200K (Claude standard) to 1M (Claude Beta).</p>
+      </div>
+      <div class="card">
+        <div class="icon">📉</div>
+        <h3>Degradation starts early</h3>
+        <p>Chroma's context-rot work shows measurable degradation starting at 10–25% window fill for complex tasks. Copilot docs recommend instruction files at ~1,000 lines.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚖️</div>
+        <h3>The community consensus</h3>
+        <p>Every rule should earn its tokens, and anything that costs more than it saves is lighting money on fire while degrading output quality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="page-nav">
+      <a href="best-practices.html"><div class="label">← Previous</div><div class="title">06 — Best practices</div></a>
+      <a href="conclusions.html" class="next"><div class="label">Next chapter</div><div class="title">08 — Conclusions →</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank" class="channel">Сашко пише код</a></div>
+  <div>Understanding Skills in AI tools · Based on the developer's guide, 2026</div>
+  <div class="links">
+    <a href="index.html">Overview</a>
+    <a href="claude-skills.html">Claude</a>
+    <a href="cursor-rules.html">Cursor</a>
+    <a href="conclusions.html">Conclusions</a>
+    <a href="https://www.youtube.com/@dev.sashko" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Cursor Rules — Understanding Skills in AI tools</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Skills.</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="what-are-skills.html">What they are</a>
+      <a href="claude-skills.html">Claude</a>
+      <a href="cursor-rules.html" class="active">Cursor</a>
+      <a href="tool-comparison.html">Comparison</a>
+      <a href="create-skill.html">Create</a>
+      <a href="best-practices.html">Best practices</a>
+      <a href="pros-cons.html">Pros & cons</a>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+    <div class="nav-cta"><a href="https://www.youtube.com/@dev.sashko" target="_blank">@dev.sashko →</a></div>
+  </div>
+</nav>
+
+<div class="channel-banner">
+  Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank">Сашко пише код</a>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="eyebrow">Chapter 03 · A different philosophy</div>
+      <h1 class="hero" style="font-size:72px;">Cursor Rules.<br/><span class="gradient-word">Four modes, four jobs.</span></h1>
+      <p class="lead">Rules live in <code style="background:rgba(255,255,255,0.06); padding:3px 10px; border-radius:8px; font-size:18px; color:#64d2ff;">.cursor/rules/</code> and use <code style="background:rgba(255,255,255,0.06); padding:3px 10px; border-radius:8px; font-size:18px; color:#64d2ff;">.mdc</code> files. As of Cursor 2.2, the format transitions toward folders with <code style="background:rgba(255,255,255,0.06); padding:3px 10px; border-radius:8px; font-size:18px; color:#64d2ff;">RULE.md</code>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Frontmatter</div>
+      <h2 class="section-title">Three fields combine into four activation modes.</h2>
+      <p class="lead">A rule's frontmatter exposes <code style="color:#64d2ff;">description</code>, <code style="color:#64d2ff;">globs</code>, and <code style="color:#64d2ff;">alwaysApply</code>. The combination tells Cursor when the rule should enter the chat.</p>
+    </div>
+
+    <div class="matrix reveal">
+      <div class="mode">
+        <div class="mode-name">Always Apply</div>
+        <code>alwaysApply: true</code>
+        <p>Injected into every chat message. Globs are ignored.</p>
+      </div>
+      <div class="mode">
+        <div class="mode-name">Specific Files</div>
+        <code>globs set · alwaysApply: false</code>
+        <p>Auto-attaches when a referenced/open file matches the glob.</p>
+      </div>
+      <div class="mode">
+        <div class="mode-name">Intelligently</div>
+        <code>description only</code>
+        <p>Agent decides whether to load it based on the description.</p>
+      </div>
+      <div class="mode">
+        <div class="mode-name">Manually</div>
+        <code>all empty</code>
+        <p>Only loads when the user types <code>@rule-name</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">A React component example.</h2>
+      <p class="lead">A rule that auto-attaches on <code style="background:rgba(255,255,255,0.06); padding:3px 10px; border-radius:8px; font-size:18px; color:#64d2ff;">.tsx</code> files.</p>
+    </div>
+
+    <pre class="code reveal"><span class="c">---</span>
+<span class="k">description:</span> <span class="s">"React component standards for frontend UI files"</span>
+<span class="k">globs:</span> src/components/**/*.tsx, src/components/**/*.ts
+<span class="k">alwaysApply:</span> false
+<span class="c">---</span>
+
+<span class="c"># React Component Guidelines</span>
+
+- Define the props <span class="s">'interface'</span> at the top of the file
+- Export as a named export (no default exports)
+- Use Tailwind utility classes; avoid inline <span class="s">style={}</span> objects
+- Use TanStack Query for server state; never <span class="s">useEffect</span> + fetch
+
+<span class="p">@component-template.tsx</span></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Precedence & scope</div>
+      <h2 class="section-title">Team Rules → Project Rules → User Rules.</h2>
+      <p class="lead">Cursor has four scopes layered in precedence order. Commands (a passive context, command set) is a newer surface — 2.0 added that, and the CLI ships built-in slash commands like <code style="color:#64d2ff;">/summarize</code>.</p>
+    </div>
+
+    <div class="cards reveal" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="card">
+        <div class="icon">🏢</div>
+        <h3>Team Rules</h3>
+        <p>Enterprise plans — set admin-wide, no frontmatter needed.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📦</div>
+        <h3>Project Rules</h3>
+        <p>Live in the repo and get committed. The format configured with the <code style="color:#64d2ff;">.cursor/</code> tree.</p>
+      </div>
+      <div class="card">
+        <div class="icon">👤</div>
+        <h3>User Rules</h3>
+        <p>Apply only to Agent (Chat) and Inline Edit — and do <strong style="color:var(--fg);">not</strong> influence Cursor's Tab autocomplete.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Commands</h3>
+        <p>Keep large rules out of 500 lines; split into composable commands. Communities like <code style="color:#64d2ff;">cursor.directory</code> distribute ~3.5k-star shared packs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="page-nav">
+      <a href="claude-skills.html"><div class="label">← Previous</div><div class="title">02 — Claude Skills</div></a>
+      <a href="tool-comparison.html" class="next"><div class="label">Next chapter</div><div class="title">04 — Tool comparison →</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank" class="channel">Сашко пише код</a></div>
+  <div>Understanding Skills in AI tools · Based on the developer's guide, 2026</div>
+  <div class="links">
+    <a href="index.html">Overview</a>
+    <a href="claude-skills.html">Claude</a>
+    <a href="cursor-rules.html">Cursor</a>
+    <a href="conclusions.html">Conclusions</a>
+    <a href="https://www.youtube.com/@dev.sashko" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

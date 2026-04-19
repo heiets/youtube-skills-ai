@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Best practices — Understanding Skills in AI tools</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Skills.</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="what-are-skills.html">What they are</a>
+      <a href="claude-skills.html">Claude</a>
+      <a href="cursor-rules.html">Cursor</a>
+      <a href="tool-comparison.html">Comparison</a>
+      <a href="create-skill.html">Create</a>
+      <a href="best-practices.html" class="active">Best practices</a>
+      <a href="pros-cons.html">Pros & cons</a>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+    <div class="nav-cta"><a href="https://www.youtube.com/@dev.sashko" target="_blank">@dev.sashko →</a></div>
+  </div>
+</nav>
+
+<div class="channel-banner">
+  Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank">Сашко пише код</a>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="eyebrow">Chapter 06 · For programming contexts</div>
+      <h1 class="hero" style="font-size:72px;">Best practices.<br/><span class="gradient-word">Ruthless editing.</span></h1>
+      <p class="lead">The single highest-leverage practice is ruthless editing. Anthropic's own best-practices page puts it plainly: "If Claude already does something correctly without the instruction, delete it."</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">Every line is pure token-waste and attention dilution.</h2>
+    </div>
+
+    <div class="cards reveal">
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Write specific rules with concrete examples</h3>
+        <p>Good and bad patterns. Trigger.dev's engineering blog notes examples — especially counterexamples — outperform abstract prose.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚠️</div>
+        <h3>Avoid contradictions aggressively</h3>
+        <p>GitHub Copilot's docs explicitly warn that conflicting rules across personal, repo, and org levels produce unpredictable behavior.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧹</div>
+        <h3>Don't mix legacy with modern</h3>
+        <p>Cursor's docs warn the same about mixing legacy <code style="color:#64d2ff;">.cursorrules</code> with modern <code style="color:#64d2ff;">.cursor/rules/</code> files.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Version-control your skills</div>
+      <h2 class="section-title">Source code that affects your software.</h2>
+      <p class="lead">Commit <code style="color:#64d2ff;">.cursor/rules/</code>, <code style="color:#64d2ff;">.claude/skills/</code>, and <code style="color:#64d2ff;">AGENTS.md</code> to your repo and review them in PRs like any other code. But audit for secrets.</p>
+    </div>
+
+    <div class="dual reveal">
+      <div class="panel good">
+        <div class="tag">Do this</div>
+        <h3>Treat skills as real code</h3>
+        <ul>
+          <li><strong>Commit them</strong>Version-control skills in the same repo as the code they shape.</li>
+          <li><strong>Review them in PRs</strong>Like any change, they affect deterministic agent behavior.</li>
+          <li><strong>Prune quarterly</strong>Delete anything the model already does right; delete contradictions.</li>
+          <li><strong>Use AGENTS.md as shared source of truth</strong>Supplement with tool-specific rules for tool-specific features.</li>
+        </ul>
+      </div>
+      <div class="panel bad">
+        <div class="tag">Real risks</div>
+        <h3>Audit before you trust</h3>
+        <ul>
+          <li><strong>Secrets in skills</strong>Audit them for secrets — they're committed to source control.</li>
+          <li><strong>Stale rules cause confident bugs</strong>Because rules are injected with high authority, the AI aggressively applies a rule six months out of date — forcing an old SDK syntax, a deprecated API, or a removed framework method. The symptom isn't a random mistake; it's the AI refusing to use the correct modern pattern.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Team collaboration</div>
+      <h2 class="section-title">AGENTS.md wins as the shared source of truth.</h2>
+      <p class="lead">Since it works across nearly every tool. Hub repos like Continue.dev's, cursor.directory, and the anthropics/skills repo all provide importable rule packages for common frameworks.</p>
+    </div>
+    <div class="pills reveal">
+      <div class="pill">Continue.dev's Hub</div>
+      <div class="pill">cursor.directory</div>
+      <div class="pill">anthropics/skills</div>
+      <div class="pill">awesome-cursor-rules-mdc (~3.5k ★)</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="page-nav">
+      <a href="create-skill.html"><div class="label">← Previous</div><div class="title">05 — How to create</div></a>
+      <a href="pros-cons.html" class="next"><div class="label">Next chapter</div><div class="title">07 — Pros & cons →</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank" class="channel">Сашко пише код</a></div>
+  <div>Understanding Skills in AI tools · Based on the developer's guide, 2026</div>
+  <div class="links">
+    <a href="index.html">Overview</a>
+    <a href="claude-skills.html">Claude</a>
+    <a href="cursor-rules.html">Cursor</a>
+    <a href="conclusions.html">Conclusions</a>
+    <a href="https://www.youtube.com/@dev.sashko" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

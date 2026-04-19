@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>What skills actually are — Understanding Skills in AI tools</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Skills.</div>
+    <div class="nav-links">
+      <a href="index.html">Overview</a>
+      <a href="what-are-skills.html" class="active">What they are</a>
+      <a href="claude-skills.html">Claude</a>
+      <a href="cursor-rules.html">Cursor</a>
+      <a href="tool-comparison.html">Comparison</a>
+      <a href="create-skill.html">Create</a>
+      <a href="best-practices.html">Best practices</a>
+      <a href="pros-cons.html">Pros & cons</a>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+    <div class="nav-cta"><a href="https://www.youtube.com/@dev.sashko" target="_blank">@dev.sashko →</a></div>
+  </div>
+</nav>
+
+<div class="channel-banner">
+  Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank">Сашко пише код</a>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="eyebrow">Chapter 01</div>
+      <h1 class="hero" style="font-size:72px;">What skills<br/><span class="gradient-word">actually are.</span></h1>
+      <p class="lead">A skill is a Markdown file that gets injected into the AI's context so it behaves consistently across sessions. It is the persistent memory the tool doesn't have by default.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="section-title">The problem they solve.</h2>
+      <p class="lead">Large language models forget everything between conversations. Skills give them a reliable reference sheet — a way to answer TanStack Query vs useEffect, the test folder, the casing — once.</p>
+    </div>
+
+    <div class="cards reveal">
+      <div class="card">
+        <div class="icon">📁</div>
+        <h3>File-based</h3>
+        <p>Skills live as files in the repository — a plain Markdown document, often with YAML frontmatter.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔀</div>
+        <h3>Version-controlled</h3>
+        <p>Teams share them through Git. Source code that affects how the AI behaves — review them in PRs.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Conditional</h3>
+        <p>Modern implementations support loading skills only when they're relevant, saving tokens and attention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Beyond text</div>
+      <h2 class="section-title">Skills can carry more than instructions.</h2>
+      <p class="lead">Third, skills can bundle more than text — supporting scripts, reference documents, and templates the AI can execute or read on demand.</p>
+    </div>
+    <div class="pills reveal">
+      <div class="pill">instructions files (GitHub Copilot)</div>
+      <div class="pill">rules (Cursor, Windsurf, Continue)</div>
+      <div class="pill">memories (auto-captured preferences)</div>
+      <div class="pill">conventions (Aider)</div>
+      <div class="pill">custom commands (user-invoked prompts)</div>
+      <div class="pill">context files (Gemini CLI)</div>
+    </div>
+    <p class="body reveal" style="margin-top:28px; max-width:880px;">They all point at the same underlying idea: <strong style="color:var(--fg);">persistent, reusable context separate from the conversation itself.</strong></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="page-nav">
+      <a href="index.html"><div class="label">← Overview</div><div class="title">Back to start</div></a>
+      <a href="claude-skills.html" class="next"><div class="label">Next chapter</div><div class="title">02 — Claude Skills →</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank" class="channel">Сашко пише код</a></div>
+  <div>Understanding Skills in AI tools · Based on the developer's guide, 2026</div>
+  <div class="links">
+    <a href="index.html">Overview</a>
+    <a href="claude-skills.html">Claude</a>
+    <a href="cursor-rules.html">Cursor</a>
+    <a href="conclusions.html">Conclusions</a>
+    <a href="https://www.youtube.com/@dev.sashko" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

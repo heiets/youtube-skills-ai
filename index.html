@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Skills in AI tools — Understanding Agents' Memory Layer</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span>Skills.</div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Overview</a>
+      <a href="what-are-skills.html">What they are</a>
+      <a href="claude-skills.html">Claude</a>
+      <a href="cursor-rules.html">Cursor</a>
+      <a href="tool-comparison.html">Comparison</a>
+      <a href="create-skill.html">Create</a>
+      <a href="best-practices.html">Best practices</a>
+      <a href="pros-cons.html">Pros & cons</a>
+      <a href="conclusions.html">Conclusions</a>
+    </div>
+    <div class="nav-cta"><a href="https://www.youtube.com/@dev.sashko" target="_blank">@dev.sashko →</a></div>
+  </div>
+</nav>
+
+<div class="channel-banner">
+  Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank">Сашко пише код</a>
+</div>
+
+<section class="section">
+  <div class="container hero-wrap">
+    <div class="eyebrow fade-in">A developer's guide · 2026</div>
+    <h1 class="hero fade-in d1">Skills are the<br/><span class="gradient-word">most impactful</span><br/>customization in AI tools.</h1>
+    <p class="lead fade-in d2">Reusable instruction packages that teach AI coding agents your specific conventions, workflows, and context — without re-explaining them every time.</p>
+
+    <div class="hero-visual">
+      <div class="orb fade-in d3"><div class="orb-num">Oct 16</div><div class="orb-label">Anthropic launches Claude Skills, 2025</div></div>
+      <div class="orb fade-in d4"><div class="orb-num">Dec 18</div><div class="orb-label">Skills published as an open standard, 2025</div></div>
+      <div class="orb fade-in d5"><div class="orb-num">v0.45</div><div class="orb-label">Cursor's modern rules system, early 2025</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">The difference</div>
+      <h2 class="section-title">An assistant that <em style="font-style:normal; background:linear-gradient(135deg,#0a84ff,#bf5af2); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;">"kind of gets"</em> your codebase — or one that feels like a teammate.</h2>
+      <p class="lead" style="margin-top:24px;">Skills solve a mechanical repetition problem: every new chat starts from zero. You re-explain that your team uses TanStack Query, not useEffect. That tests go in a specific folder. That the API uses snake_case.</p>
+    </div>
+
+    <div class="big-stats reveal">
+      <div class="big-stat"><div class="big-stat-num">~100</div><div class="big-stat-label">tokens per skill, idle<br/>(just metadata)</div></div>
+      <div class="big-stat"><div class="big-stat-num b">&lt;5K</div><div class="big-stat-label">tokens per skill<br/>when triggered</div></div>
+      <div class="big-stat"><div class="big-stat-num c">7,500+</div><div class="big-stat-label">token ballooning from a<br/>single edit, documented case</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Three core properties</div>
+      <h2 class="section-title">What makes a skill, a skill.</h2>
+    </div>
+    <div class="cards reveal">
+      <div class="card">
+        <div class="icon">📄</div>
+        <div class="num">01</div>
+        <h3>File-based & version-controlled</h3>
+        <p>Teams share them through Git — readable, reviewable, diff-able. Source code that affects your software.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚡</div>
+        <div class="num">02</div>
+        <h3>Conditional loading</h3>
+        <p>Modern implementations support loading only when relevant — saving tokens, preserving the context window.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧰</div>
+        <div class="num">03</div>
+        <h3>More than just text</h3>
+        <p>Skills can bundle supporting scripts, reference documents, and templates the AI can execute or read on demand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Inside this guide</div>
+      <h2 class="section-title">Eight chapters, one honest read.</h2>
+    </div>
+    <div class="cards reveal" style="grid-template-columns: repeat(4, 1fr);">
+      <a class="card" href="what-are-skills.html"><div class="num">01</div><h3>What skills actually are</h3><p>The persistent-memory primitive tools forgot to build.</p></a>
+      <a class="card" href="claude-skills.html"><div class="num">02</div><h3>Claude Skills</h3><p>The reference implementation and its progressive disclosure.</p></a>
+      <a class="card" href="cursor-rules.html"><div class="num">03</div><h3>Cursor Rules</h3><p>A different philosophy: four activation modes.</p></a>
+      <a class="card" href="tool-comparison.html"><div class="num">04</div><h3>Tool comparison</h3><p>Every major coding assistant, side by side.</p></a>
+      <a class="card" href="create-skill.html"><div class="num">05</div><h3>How to create one</h3><p>The predictable shape that makes a skill work.</p></a>
+      <a class="card" href="best-practices.html"><div class="num">06</div><h3>Best practices</h3><p>Ruthless editing, file-size discipline, activation tests.</p></a>
+      <a class="card" href="pros-cons.html"><div class="num">07</div><h3>Pros & cons</h3><p>The brutally honest picture — wins and failures.</p></a>
+      <a class="card" href="conclusions.html"><div class="num">08</div><h3>Conclusions</h3><p>Three principles that survive all the hype.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="page-nav">
+      <span></span>
+      <a href="what-are-skills.html" class="next">
+        <div class="label">Next chapter</div>
+        <div class="title">01 — What skills actually are →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand-line">Спеціально для каналу <a href="https://www.youtube.com/@dev.sashko" target="_blank" class="channel">Сашко пише код</a></div>
+  <div>Understanding Skills in AI tools · Based on the developer's guide, 2026</div>
+  <div class="links">
+    <a href="index.html">Overview</a>
+    <a href="claude-skills.html">Claude</a>
+    <a href="cursor-rules.html">Cursor</a>
+    <a href="conclusions.html">Conclusions</a>
+    <a href="https://www.youtube.com/@dev.sashko" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
